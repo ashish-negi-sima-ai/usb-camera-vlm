@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jarvic · Modalix</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="eyebrow">MODALIX · GEMMA 4</p><h1>Meet Jarvic.</h1>
+        <p class="intro">A short conversation, with a fresh view when you need it.</p></div>
+      <span id="status" role="status">Connecting…</span>
+    </header>
+    <div class="workspace">
+      <section class="card camera" aria-labelledby="camera-title">
+        <div class="card-heading"><h2 id="camera-title">Live USB camera</h2><span id="camera-status" class="tag">CONNECTING</span></div>
+        <div class="image-wrap"><img id="video" src="/api/video.mjpg" alt="Live video from the USB camera on Modalix" hidden>
+          <p id="placeholder">Connecting to the USB camera…</p></div>
+        <p class="hint" id="camera-hint">The video stays live. With vision enabled, Ask Jarvic sends a fresh frame with your question.</p>
+        <details id="question-image" hidden><summary id="captured">Image sent to Jarvic</summary>
+          <img id="snapshot" alt="Frozen image used for the latest vision question" hidden>
+        </details>
+      </section>
+      <section class="card conversation" aria-labelledby="question-title">
+        <form id="question-form"><label id="question-title" for="question">Your question</label>
+          <textarea id="question" maxlength="2000" rows="3" placeholder="What objects are visible?" required>Describe what you see in this image in two short sentences.</textarea>
+          <div class="form-footer"><label class="vision-toggle"><input id="vision" type="checkbox" checked> Enable vision</label><button id="ask" type="submit" disabled>Ask Jarvic <span aria-hidden="true">↗</span></button></div>
+        </form>
+        <div class="answer-heading"><h2>Conversation</h2><button id="clear" class="secondary" type="button" disabled>Clear conversation</button></div>
+        <p class="hint">Remembers up to 3 recent exchanges. Earlier images are not reused.</p>
+        <div id="history"></div>
+        <article id="current-turn" class="turn" hidden>
+          <p class="speaker" id="current-label">You</p><p id="current-prompt" class="message"></p>
+          <p class="speaker">Jarvic</p><p id="answer" class="message" aria-live="polite"></p>
+        </article>
+        <p id="empty-chat" class="hint">Ask a question to get started.</p>
+        <p id="timing"></p>
+        <p id="error" role="alert" hidden></p>
+        <p id="saved" class="hint" hidden>Answer saved on Modalix.</p>
+      </section>
+    </div>
+    <footer>On-device inference · USB camera on Modalix <span>Conversation shared by this app’s browser tabs.</span></footer>
+  </main>
+</body>
+</html>
